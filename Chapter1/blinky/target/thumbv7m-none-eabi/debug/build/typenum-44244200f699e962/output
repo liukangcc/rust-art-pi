@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=D:\repo\github\rust-for-rt-thread\Chapter1\blinky\target\thumbv7m-none-eabi\debug\build\typenum-44244200f699e962\out\consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=D:\repo\github\rust-for-rt-thread\Chapter1\blinky\target\thumbv7m-none-eabi\debug\build\typenum-44244200f699e962\out\op.rs

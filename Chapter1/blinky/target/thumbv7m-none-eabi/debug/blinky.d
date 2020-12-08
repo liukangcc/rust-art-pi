@@ -1,0 +1,1 @@
+D:\repo\github\rust-for-rt-thread\Chapter1\blinky\target\thumbv7m-none-eabi\debug\blinky: D:\repo\github\rust-for-rt-thread\Chapter1\blinky\build.rs D:\repo\github\rust-for-rt-thread\Chapter1\blinky\memory.x D:\repo\github\rust-for-rt-thread\Chapter1\blinky\src\main.rs build.rs link.x.in memory.x

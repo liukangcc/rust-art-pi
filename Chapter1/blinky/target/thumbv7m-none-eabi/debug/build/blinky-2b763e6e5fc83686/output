@@ -1,0 +1,2 @@
+cargo:rustc-link-search=D:\repo\github\rust-for-rt-thread\Chapter1\blinky\target\thumbv7m-none-eabi\debug\build\blinky-2b763e6e5fc83686\out
+cargo:rerun-if-changed=memory.x
