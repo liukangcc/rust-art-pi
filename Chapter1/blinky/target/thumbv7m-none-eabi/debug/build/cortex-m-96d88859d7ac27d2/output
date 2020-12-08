@@ -1,4 +1,0 @@
-cargo:rustc-link-lib=static=cortex-m
-cargo:rustc-link-search=D:\repo\github\rust-for-rt-thread\Chapter1\blinky\target\thumbv7m-none-eabi\debug\build\cortex-m-96d88859d7ac27d2\out
-cargo:rustc-cfg=cortex_m
-cargo:rustc-cfg=armv7m

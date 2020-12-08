@@ -1,3 +1,0 @@
-cargo:rustc-link-search=D:\repo\github\rust-for-rt-thread\Chapter1\blinky\target\thumbv7m-none-eabi\debug\build\stm32h7-659cc1f048843873\out
-cargo:rerun-if-changed=src/stm32h743v/device.x
-cargo:rerun-if-changed=build.rs
