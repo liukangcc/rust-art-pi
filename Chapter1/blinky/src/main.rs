@@ -32,17 +32,12 @@ fn main() -> ! {
     // `clocks`
     let clocks = rcc.cfgr.freeze(&mut flash.acr);
 
-    // Acquire the GPIOB peripheral
+    // Acquire the GPIOI peripheral
     let mut gpioi = dp.GPIOI.split(&mut rcc.ahb4);
 
-    // Configure gpio B pin 7 as a push-pull output.
-    let mut ld2 = gpioi.pi8
+    // Configure gpio i pin 8 as a push-pull output.
+    let mut ld0 = gpioi.pi8
         .into_push_pull_output(&mut gpioi.moder, &mut gpioi.otyper);
-
-    // Configure gpio B pin 14 as a push-pull output.
-//    let mut ld3 = gpiob.pb14
-//        .into_push_pull_output(&mut gpiob.moder, &mut gpiob.otyper);
-//    ld3.set_high().unwrap();
 
     // Configure the timer to trigger an update every second
     let mut timer = Timer::tim1(dp.TIM1, 1.hz(), clocks, &mut rcc.apb2);
@@ -50,9 +45,8 @@ fn main() -> ! {
     // Wait for the timer to trigger an update and change the state of the LED
     loop {
         block!(timer.wait()).unwrap();
-        ld2.set_high().unwrap();
+        ld0.set_high().unwrap();
         block!(timer.wait()).unwrap();
-        ld2.set_low().unwrap();
+        ld0.set_low().unwrap();
     }
-
 }

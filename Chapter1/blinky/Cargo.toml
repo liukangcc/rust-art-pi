@@ -16,3 +16,10 @@ embedded-hal = "0.2.3"
 panic-halt = "0.2"
 stm32h7xx-hal = {version="0.1", features=["stm32h7x3"]}
 
+[profile.dev]
+debug = true
+
+[profile.release]
+debug = true
+lto = true
+opt-level = "s"
