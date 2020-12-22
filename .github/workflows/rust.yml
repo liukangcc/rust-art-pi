@@ -17,7 +17,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     name: ${{ matrix.legs.Example }}
     strategy:
       fail-fast: false
@@ -42,7 +42,6 @@ jobs:
         run: |
           cargo --version
           cd example/$Example
-          ls -al
           cargo build --release --all-features
           
       - name: Upload Results
