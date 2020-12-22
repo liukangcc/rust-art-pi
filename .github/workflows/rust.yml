@@ -38,10 +38,12 @@ jobs:
       - name: Cargo build
         env:
           Example: ${{ matrix.legs.Example }}
+          Target: ${{ matrix.legs.Target }}
         run: |
           cargo --version
           cd example/$Example
           cargo build --release --all-features
+          cargo objcopy target/$Target/release/$Example -- -O binary target/$Target/release/$Example.bin
           
       - name: Upload Results
         if: ${{ success() }}
@@ -49,4 +51,4 @@ jobs:
         continue-on-error: True
         with:
           name: ${{ matrix.legs.Example }}
-          path: example/${{ matrix.legs.Example }}/target/${{ matrix.legs.Target }}/release/${{ matrix.legs.Example }}
+          path: example/${{ matrix.legs.Example }}/target/${{ matrix.legs.Target }}/release/${{ matrix.legs.Example }}.bin
