@@ -23,22 +23,27 @@ jobs:
       fail-fast: false
       matrix:
         legs:
-          - {Example: "example/blinky"}
-          - {Example: "example/uart"}
+          - {Example: "example/blinky", Target: "thumbv7em-none-eabihf"}
+          - {Example: "example/uart", Target: "thumbv7em-none-eabihf"}
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         id: toolchain
         with:
+          profile: minimal
           toolchain: stable
+          target:  ${{ matrix.legs.Target }
+          override: true
 
+      - name: Security audit
+        uses: actions-rs/audit-check@v1
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
       - name: Cargo build
         env:
           Example: ${{ matrix.legs.Example }}
         run: |
-          echo $RUSTC
-          echo $RUSTC_HASH
-          echo $CARGO
-          echo $RUSTUP
+          cargo --version
           cd $Example
           cargo build --release --all-features
