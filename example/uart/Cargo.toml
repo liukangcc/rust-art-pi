@@ -1,0 +1,25 @@
+[package]
+name = "uart"
+version = "0.1.0"
+authors = ["thread-liu <lk9608@outlook.com>"]
+edition = "2018"
+categories = ["embedded", "hardware-support", "no-std"]
+description = "Examples uart programs for art-pi"
+keywords = ["arm", "cortex-m", "stm32h7xx", "hal"]
+license = "0BSD"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = "0.6.0"
+cortex-m-rt = "0.6.10"
+panic-halt = "0.2"
+nb = "0.1.1"
+stm32h7xx-hal = {version = "0.4", features = ["stm32h743v","rt"]}
+
+[profile.dev]
+debug = true
+
+[profile.release]
+debug = true
+lto = true
+opt-level = "s"
