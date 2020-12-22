@@ -1,0 +1,44 @@
+name: Rust Continuous integration
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  # Runs at 16:00 UTC on the 1st of every month
+  schedule:
+    - cron:  '0 16 1 * *'
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    name: ${{ matrix.legs.Example }}
+    strategy:
+      fail-fast: false
+      matrix:
+        legs:
+          - {Example: "example/blinky"}
+          - {Example: "example/uart"}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+      - id: toolchain
+        with:
+          toolchain: stable
+
+      - name: Cargo build
+        env:
+          Example: ${{ matrix.legs.Example }}
+        run: |
+          echo $RUSTC
+          echo $RUSTC_HASH
+          echo $CARGO
+          echo $RUSTUP
+          cd $Example
+          cargo build --release --all-features
