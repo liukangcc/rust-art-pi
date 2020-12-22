@@ -42,6 +42,7 @@ jobs:
         run: |
           cargo --version
           cd example/$Example
+          ls -al
           cargo build --release --all-features
           
       - name: Upload Results
