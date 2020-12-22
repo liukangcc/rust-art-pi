@@ -49,4 +49,4 @@ jobs:
         continue-on-error: True
         with:
           name: ${{ matrix.legs.Example }}
-          path: example/${{ matrix.legs.Example }}/target/${{ matrix.legs.Target }}/release/$Example
+          path: example/${{ matrix.legs.Example }}/target/${{ matrix.legs.Target }}/release/${{ matrix.legs.Example }}
