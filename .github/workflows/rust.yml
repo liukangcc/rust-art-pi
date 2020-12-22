@@ -23,8 +23,8 @@ jobs:
       fail-fast: false
       matrix:
         legs:
-          - {Example: "example/blinky", Target: "thumbv7em-none-eabihf"}
-          - {Example: "example/uart", Target: "thumbv7em-none-eabihf"}
+          - {Example: "blinky", Target: "thumbv7em-none-eabihf"}
+          - {Example: "uart", Target: "thumbv7em-none-eabihf"}
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
@@ -34,16 +34,22 @@ jobs:
           toolchain: stable
           target:  ${{ matrix.legs.Target }}
           override: true
-
-#       - name: Security audit
-#         uses: actions-rs/audit-check@v1
-#         with: 
-#           token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Cargo build
         env:
           Example: ${{ matrix.legs.Example }}
         run: |
           cargo --version
-          cd $Example
+          cd example/$Example
           cargo build --release --all-features
+          
+      - name: Upload Results
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v2
+        env:
+          Example: ${{ matrix.legs.Example }}
+          Target: ${{ matrix.legs.Target }}
+        continue-on-error: True
+        with:
+          name: ${{ matrix.legs.Example }}
+          path: example/$Example/target/$Target/release/$Example
