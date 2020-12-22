@@ -46,10 +46,7 @@ jobs:
       - name: Upload Results
         if: ${{ success() }}
         uses: actions/upload-artifact@v2
-        env:
-          Example: ${{ matrix.legs.Example }}
-          Target: ${{ matrix.legs.Target }}
         continue-on-error: True
         with:
           name: ${{ matrix.legs.Example }}
-          path: example/$Example/target/$Target/release/$Example
+          path: example/${{ matrix.legs.Example }}/target/${{ matrix.legs.Target }}/release/$Example
