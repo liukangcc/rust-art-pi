@@ -1,5 +1,5 @@
 [package]
-name = "uart"
+name = "blinky"
 version = "0.1.0"
 authors = ["thread-liu <lk9608@outlook.com>"]
 edition = "2018"
