@@ -39,9 +39,12 @@ fn main() -> ! {
     let tx = gpioa.pa0.into_alternate_af8();
     let rx = gpioi.pi9.into_alternate_af8();
 
+    let mut uart_config = serial::config::Config::default();
+    uart_config.baudrate = 115_200_u32.bps();
+
     let mut serial = dp
         .UART4
-        .usart((tx, rx), serial::config::Config::default(), &mut ccdr)
+        .usart((tx, rx), uart_config, &mut ccdr)
         .unwrap();
 
     serial.listen(serial::Event::Rxne);
