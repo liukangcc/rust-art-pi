@@ -1,8 +1,7 @@
-# rust-for-rt-thread
+# rust-art-pi
 - learn rust
-- use rust realize rt-thread
-- use rust(rt-thread) light a led
-- ....
+- Use rust to make art-pi more fun 
+
 ## doc
 - https://github.com/rust-lang-cn
 - https://next.xuetangx.com/course/thu08091002729/3175284
