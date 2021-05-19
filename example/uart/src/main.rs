@@ -41,7 +41,7 @@ fn main() -> ! {
 
     let mut serial = dp
         .UART4
-        .usart((tx, rx), serial::config::Config::default(), &mut ccdr)
+        .usart((tx, rx), serial::config::Config::default().baudrate(115_200_u32.bps()), &mut ccdr)
         .unwrap();
 
     serial.listen(serial::Event::Rxne);
