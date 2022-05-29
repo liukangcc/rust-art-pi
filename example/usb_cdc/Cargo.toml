@@ -1,10 +1,10 @@
 [package]
-name = "blinky"
+name = "usb_cdc"
 version = "0.1.0"
 authors = ["thread-liu <lk9608@outlook.com>"]
 edition = "2018"
 categories = ["embedded", "hardware-support", "no-std"]
-description = "Examples uart programs for art-pi"
+description = "Examples usb_cdc programs for art-pi"
 keywords = ["arm", "cortex-m", "stm32h7xx", "hal"]
 license = "0BSD"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -14,8 +14,9 @@ cortex-m = "0.7.4"
 cortex-m-rt = "0.7.1"
 panic-halt = "0.2"
 nb = "0.1.1"
-stm32h7xx-hal = {version = "0.12.2", features = ["stm32h743v","rt"]}
-
+stm32h7xx-hal = {version = "0.12.2", features = ["stm32h743v","rt","usb_hs","rm0433"]}
+usb-device = "0.2.5"
+usbd-serial = "0.1.0"
 [profile.dev]
 debug = true
 
